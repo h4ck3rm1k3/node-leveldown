@@ -11,7 +11,6 @@
 #include <node.h>
 
 #include "leveldb/db.h"
-//#include "nan.h"
 #include "leveldown.h"
 #include "iterator.h"
 

@@ -51,12 +51,13 @@ void NextWorker::HandleOKCallback () {
 
   // clean up & handle the next/end state see iterator.cc/checkEndCallback
   localCallback(iterator);
+
   v8::Isolate* isolate = v8::Isolate::GetCurrent();  
   if (ok) {
     v8::Local<v8::Value> argv[] = {
-      v8::Local<v8::Value>::New(isolate, v8::Null())
-      , returnKey
-      , returnValue
+        v8::Local<v8::Value>::New(isolate, v8::Null())
+        , returnKey
+        , returnValue
     };
     callback->Call(3, argv);
   } else {

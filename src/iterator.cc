@@ -322,7 +322,7 @@ NAN_METHOD(Iterator::New) {
 
 
       v8::Local<v8::Value> endBuffer =
-        v8::Local<v8::Value>::New(isolate,optionsObj->Get(NanSymbol("end")));
+          v8::Local<v8::Value>::New(isolate,optionsObj->Get(NanSymbol("end")));
 
       // ignore end if it has size 0 since a Slice can't have length 0
       if (StringOrBufferLength(endBuffer) > 0) {
@@ -342,7 +342,7 @@ NAN_METHOD(Iterator::New) {
 
 
       v8::Local<v8::Value> ltBuffer =
-        v8::Local<v8::Value>::New(isolate, optionsObj->Get(NanSymbol("lt")));
+          v8::Local<v8::Value>::New(isolate, optionsObj->Get(NanSymbol("lt")));
 
       // ignore end if it has size 0 since a Slice can't have length 0
       if (StringOrBufferLength(ltBuffer) > 0) {
@@ -359,8 +359,8 @@ NAN_METHOD(Iterator::New) {
 
 
       v8::Local<v8::Value> lteBuffer =
-        v8::Local<v8::Value>::New(isolate, 
-                                  optionsObj->Get(NanSymbol("lte")));
+          v8::Local<v8::Value>::New(isolate, 
+                                    optionsObj->Get(NanSymbol("lte")));
 
       // ignore end if it has size 0 since a Slice can't have length 0
       if (StringOrBufferLength(lteBuffer) > 0) {
@@ -376,7 +376,7 @@ NAN_METHOD(Iterator::New) {
           || optionsObj->Get(NanSymbol("gt"))->IsString())) {
 
       v8::Local<v8::Value> gtBuffer =
-        v8::Local<v8::Value>::New(isolate,optionsObj->Get(NanSymbol("gt")));
+          v8::Local<v8::Value>::New(isolate,optionsObj->Get(NanSymbol("gt")));
 
       // ignore end if it has size 0 since a Slice can't have length 0
       if (StringOrBufferLength(gtBuffer) > 0) {

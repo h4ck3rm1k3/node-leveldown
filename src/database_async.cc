@@ -132,8 +132,8 @@ void ReadWorker::HandleOKCallback () {
   }
   v8::Isolate* isolate = v8::Isolate::GetCurrent();  
   v8::Local<v8::Value> argv[] = {
-    v8::Local<v8::Value>::New(isolate, v8::Null())
-    , returnValue
+      v8::Local<v8::Value>::New(isolate, v8::Null())
+      , returnValue
   };
   callback->Call(2, argv);
 }
@@ -259,8 +259,8 @@ void ApproximateSizeWorker::HandleOKCallback () {
   v8::Local<v8::Value> returnValue = v8::Number::New((double) size);
   v8::Isolate* isolate = v8::Isolate::GetCurrent();  
   v8::Local<v8::Value> argv[] = {
-    v8::Local<v8::Value>::New(isolate,v8::Null())
-    , returnValue
+      v8::Local<v8::Value>::New(isolate,v8::Null())
+      , returnValue
   };
   callback->Call(2, argv);
 }
