@@ -131,6 +131,7 @@ void ReadWorker::HandleOKCallback () {
     returnValue = v8::String::New((char*)value.data(), value.size());
   }
   v8::Isolate* isolate = v8::Isolate::GetCurrent();  
+  v8::HandleScope handle_scope(isolate);
   v8::Local<v8::Value> argv[] = {
       v8::Local<v8::Value>::New(isolate, v8::Null())
       , returnValue
@@ -258,6 +259,7 @@ void ApproximateSizeWorker::HandleOKCallback () {
 
   v8::Local<v8::Value> returnValue = v8::Number::New((double) size);
   v8::Isolate* isolate = v8::Isolate::GetCurrent();  
+  v8::HandleScope handle_scope(isolate);
   v8::Local<v8::Value> argv[] = {
       v8::Local<v8::Value>::New(isolate,v8::Null())
       , returnValue

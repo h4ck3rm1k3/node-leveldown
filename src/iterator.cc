@@ -298,6 +298,8 @@ NAN_METHOD(Iterator::New) {
   //default to forward.
   bool reverse = false;
   v8::Isolate* isolate = v8::Isolate::GetCurrent();  
+  v8::HandleScope handle_scope(isolate);
+
   if (args.Length() > 1 && args[2]->IsObject()) {
     optionsObj = v8::Local<v8::Object>::Cast(args[2]);
 

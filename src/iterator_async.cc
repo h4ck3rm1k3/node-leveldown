@@ -53,6 +53,7 @@ void NextWorker::HandleOKCallback () {
   localCallback(iterator);
 
   v8::Isolate* isolate = v8::Isolate::GetCurrent();  
+  v8::HandleScope handle_scope(isolate);
   if (ok) {
     v8::Local<v8::Value> argv[] = {
         v8::Local<v8::Value>::New(isolate, v8::Null())
