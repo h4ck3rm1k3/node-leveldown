@@ -2,24 +2,24 @@
     "targets": [{
       "target_name": "leveldown"
     , "conditions": [
-          ["OS == 'win'", {
-              "defines": [
-                  "_HAS_EXCEPTIONS=0"
-              ]
-            , "msvs_settings": {
-                  "VCCLCompilerTool": {
-                      "RuntimeTypeInfo": "false"
-                    , "EnableFunctionLevelLinking": "true"
-                    , "ExceptionHandling": "2"
-                    , "DisableSpecificWarnings": [ "4355", "4530" ,"4267", "4244", "4506" ]
-                  }
-              }
-          }]
-        , ['OS == "linux"', {
-              'cflags': [
-                  '-Wno-unused-local-typedefs'
-              ]
-          }]
+        ['OS == "linux"', {
+            'cflags': [
+                '-Wno-unused-local-typedefs',
+                '-pthread',
+                '-m64',
+                '-Wall', 
+                '-Wextra', 
+                '-Wno-unused-parameter',
+            ],            
+            'ldflags': [ '-pthread', '-m64', '-rdynamic'],
+            'cflags_cc': [ '-fno-rtti', '-fno-exceptions' ],
+            'target_conditions': [
+                ['_type=="static_library"', {
+                    'standalone_static_library': 1, # disable thin archive which needs binutils >= 2.19
+                }],
+                ]
+        }]
+
         ]
       , "dependencies": [
             "<(module_root_dir)/deps/leveldb/leveldb.gyp:leveldb"
@@ -37,5 +37,20 @@
           , "src/leveldown.cc"
           , "src/leveldown_async.cc"
         ]
-    }]
+    },
+    {
+        'target_name': 'c_unit_test',
+        'type': 'executable',
+        'include_dirs': [
+          '.',
+        ],
+        'dependencies': [
+                      'deps/v8/tools/gyp/v8.gyp:v8'
+                      ],
+        'sources': [
+          'src/test.cc',
+        ],
+      }
+    ], 
+
 }
